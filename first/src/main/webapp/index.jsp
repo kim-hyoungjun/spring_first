@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>i just call to say i love you</title>
 </head>
 <body>
 	This is Index.jsp! Hello World <br>
 	I just call to say i love you
 </body>
 </html>
+
+<jsp:forward page="/sample/openSampleList.do"/>
