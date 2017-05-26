@@ -96,6 +96,8 @@
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<!-- Log4j -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -121,6 +123,18 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- MappingJacksonJsonView -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>

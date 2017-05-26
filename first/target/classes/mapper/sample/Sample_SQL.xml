@@ -11,8 +11,35 @@
 				CREA_DTM
 			FROM
 				TB_BOARD
+			WHERE
+				DEL_GB = 'N'
 			ORDER BY	
 				IDX DESC				
 		]]>		
 	</select>
+	
+	<insert id="insertBoard" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO TB_BOARD
+			(
+				IDX,
+				TITLE,
+				CONTENTS,
+				HIT_CNT,
+				DEL_GB,
+				CREA_DTM,
+				CREA_ID
+			)
+			VALUES
+			(
+				SEQ_TB_BOARD_IDX.NEXTVAL,
+				#{TITLE},
+				#{CONTENTS},
+				0,
+				'N',
+				SYSDATE,
+				'Admin'
+			)
+		]]>
+	</insert>
 </mapper>

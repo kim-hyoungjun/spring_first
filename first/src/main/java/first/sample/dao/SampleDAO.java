@@ -12,8 +12,11 @@ public class SampleDAO extends AbstractDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return (List<Map<String, Object>>) selectList("sample.SelectBoardList", map);
+	}
+
+	public void insertBoard(Map<String, Object> map) {
+		insert("sample.insertBoard", map);
 	}
 
 }
