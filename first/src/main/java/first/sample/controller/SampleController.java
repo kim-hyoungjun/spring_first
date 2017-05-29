@@ -47,7 +47,7 @@ public class SampleController {
 		
 		return mv;
 	}
-/*	
+	
 	@RequestMapping(value="/board/openBoardDetail.do")
 	public ModelAndView openBoardDetail(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("/board/boardDetail");
@@ -57,7 +57,8 @@ public class SampleController {
 		
 		return mv;
 	}
-	
+
+
 	@RequestMapping(value="/board/openBoardUpdate.do")
 	public ModelAndView openBoardUpdate(CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("/board/boardUpdate");
@@ -86,7 +87,7 @@ public class SampleController {
 		
 		return mv;
 	}
-*/
+
 	@RequestMapping(value="/sample/testMapArgumentResolver.do")
 	public ModelAndView testMapArgumentResolver(CommandMap commandMap)throws Exception {
 		ModelAndView mv = new ModelAndView("");
