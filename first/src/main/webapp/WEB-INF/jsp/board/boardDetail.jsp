@@ -5,6 +5,7 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
 <body>
+	<h2>게시글 상세</h2>
 	<table class="board_view">
 		<colgroup>
 			<col width="15%"/>
@@ -12,7 +13,6 @@
 			<col width="15%"/>
 			<col width="35%"/>
 		</colgroup>
-		<caption>게시글 상세</caption>
 		<tbody>
 			<tr>
 				<th scope="row">글 번호</th>
@@ -33,9 +33,26 @@
 			<tr>
 				<td colspan="4">${map.CONTENTS }</td>
 			</tr>
+			<Tr>
+				<th scope="row">첨부파일</th>
+				<td colspan=3>
+					<c:choose>
+						<c:when test="${fn:length(list) > 0}">			
+							<c:forEach var = "row" items="${list}">
+								<input type="hidden" id="IDX" value="${row.IDX}">
+								<a href="#this" id="file">${row.ORIGINAL_FILE_NAME }</a>
+								(${row.FILE_SIZE }kb)
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							첨부파일이 없습니다.
+						</c:otherwise>						
+					</c:choose>
+				</td>
+			</Tr>
 		</tbody>
 	</table>
-	
+	<br>
 	<a href="#this" class="btn" id="list">목록으로</a>
 	<a href="#this" class="btn" id="update">수정하기</a>
 	
@@ -51,6 +68,13 @@
 				e.preventDefault();
 				fn_openBoardUpdate();
 			});
+			
+			$("a[id=file]").on("click", function(e) {
+				e.preventDefault();
+				// HTML의 이벤트를 발생시키지 않고, CSS의 이벤트는 발생 시킨다.
+				fn_downloadFile($(this));
+			});
+			
 		});
 		
 		function fn_openBoardList(){
@@ -63,6 +87,15 @@
 			var idx = "${map.IDX}";
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/board/openBoardUpdate.do' />");
+			comSubmit.addParam("IDX", idx);
+			comSubmit.submit();
+		}
+		
+		function fn_downloadFile(obj) {
+			var idx 		= obj.parent().find("#IDX").val();			
+			var comSubmit	= new ComSubmit();
+			
+			comSubmit.setUrl("<c:url value='/common/downloadFile.do' />");
 			comSubmit.addParam("IDX", idx);
 			comSubmit.submit();
 		}

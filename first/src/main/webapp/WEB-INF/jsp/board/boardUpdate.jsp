@@ -5,6 +5,7 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
 <body>
+	<h2>게시글 수정</h2>
 	<form id="frm">
 		<table class="board_view">
 			<colgroup>
@@ -12,8 +13,7 @@
 				<col width="35%"/>
 				<col width="15%"/>
 				<col width="35%"/>
-			</colgroup>
-			<caption>게시글 상세</caption>
+			</colgroup>			
 			<tbody>
 				<tr>
 					<th scope="row">글 번호</th>
@@ -44,7 +44,7 @@
 			</tbody>
 		</table>
 	</form>
-	
+	<br>
 	<a href="#this" class="btn" id="list">목록으로</a>
 	<a href="#this" class="btn" id="update">저장하기</a>
 	<a href="#this" class="btn" id="delete">삭제하기</a>

@@ -5,13 +5,14 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
 <body>
-	<form id="frm">
+	<h2>게시글 작성</h2>
+	<form id="frm" name="frm" enctype="multipart/form-data">
 		<table class="board_view">
 			<colgroup>
 				<col width="15%">
 				<col width="*"/>
 			</colgroup>
-			<caption>게시글 작성</caption>
+			
 			<tbody>
 				<tr>
 					<th scope="row">제목</th>
@@ -19,12 +20,16 @@
 				</tr>
 				<tr>
 					<td colspan="2" class="view_text">
-						<textarea rows="20" cols="100" title="내용" id="CONTENTS" name="CONTENTS"></textarea>
+						<textarea rows="10" cols="100" title="내용" id="CONTENTS" name="CONTENTS"></textarea>
 					</td>
 				</tr>
+				<tr>
+					<th scope="row">첨부파일</th>
+					<td><input type="file" name="file"></td>
+				</tr>
 			</tbody>
-		</table>
-		
+		</table>		
+		<br>
 		<a href="#this" class="btn" id="write">작성하기</a>
 		<a href="#this" class="btn" id="list">목록으로</a>
 	</form>

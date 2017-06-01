@@ -6,12 +6,12 @@
 </head>
 <body>
 	<h2>게시판 목록</h2>
-	<table class="board_list">
+	<table class="board_list" width=100px>
 		<colgroup>
 			<col width="10%"/>
 			<col width="*"/>
 			<col width="15%"/>
-			<col width="20%"/>
+			<col width="30%"/>
 		</colgroup>
 		<thead>
 			<tr>

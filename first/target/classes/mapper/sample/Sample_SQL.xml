@@ -18,7 +18,10 @@
 		]]>		
 	</select>
 	
-	<insert id="insertBoard" parameterType="hashmap">
+	<insert id="insertBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+		<selectKey keyProperty="IDX" resultType="string" order="BEFORE">
+			SELECT SEQ_TB_BOARD_IDX.NEXTVAL FROM DUAL
+		</selectKey>
 		<![CDATA[
 			INSERT INTO TB_BOARD
 			(
@@ -32,7 +35,7 @@
 			)
 			VALUES
 			(
-				SEQ_TB_BOARD_IDX.NEXTVAL,
+				#{IDX},
 				#{TITLE},
 				#{CONTENTS},
 				0,
@@ -88,5 +91,42 @@
 			WHERE
 				IDX = ${IDX}
 		]]>
-	</update>	
+	</update>
+	
+	<insert id="insertFile" parameterType="hashmap">	
+		<![CDATA[
+			INSERT INTO TB_FILE
+			(
+				IDX,
+				BOARD_IDX,
+				ORIGINAL_FILE_NAME,
+				STORED_FILE_NAME,
+				FILE_SIZE,
+				CREA_ID
+			)
+			VALUES
+			(
+				SEQ_TB_FILE_IDX.NEXTVAL,
+				#{BOARD_IDX},
+				#{ORIGINAL_FILE_NAME},
+				#{STORED_FILE_NAME},
+				#{FILE_SIZE},
+				'Admin'
+			)
+		]]>
+	</insert>
+	
+	<select id="selectFileList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+				IDX,
+				ORIGINAL_FILE_NAME,				
+				ROUND(FILE_SIZE / 1024, 1) AS FILE_SIZE
+			FROM
+				TB_FILE
+			WHERE
+				BOARD_IDX = #{IDX}
+				AND DEL_GB = 'N'
+		]]>
+	</select>
 </mapper>
