@@ -46,4 +46,12 @@ public class SampleDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("sample.selectFileList", map);
 	}
 
+	public void deleteFileList(Map<String, Object> map) {
+		update("sample.deleteFileList", map);		
+	}
+
+	public void updateFile(Map<String, Object> map) {
+		update("sample.updateFile", map);		
+	}
+
 }

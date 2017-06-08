@@ -39,9 +39,11 @@
 					<c:choose>
 						<c:when test="${fn:length(list) > 0}">			
 							<c:forEach var = "row" items="${list}">
-								<input type="hidden" id="IDX" value="${row.IDX}">
-								<a href="#this" id="file">${row.ORIGINAL_FILE_NAME }</a>
-								(${row.FILE_SIZE }kb)
+								<div>
+									<input type="hidden" id="IDX" value="${row.IDX}">
+									<a href="#this" name="file">${row.ORIGINAL_FILE_NAME }</a>
+									(${row.FILE_SIZE }kb)<br />
+								</div>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
@@ -69,7 +71,7 @@
 				fn_openBoardUpdate();
 			});
 			
-			$("a[id=file]").on("click", function(e) {
+			$("a[name=file]").on("click", function(e) {
 				e.preventDefault();
 				// HTML의 이벤트를 발생시키지 않고, CSS의 이벤트는 발생 시킨다.
 				fn_downloadFile($(this));
@@ -92,7 +94,10 @@
 		}
 		
 		function fn_downloadFile(obj) {
-			var idx 		= obj.parent().find("#IDX").val();			
+			
+			
+			var idx 		= obj.parent().find("#IDX").val();
+			alert("idx = " + idx);
 			var comSubmit	= new ComSubmit();
 			
 			comSubmit.setUrl("<c:url value='/common/downloadFile.do' />");
