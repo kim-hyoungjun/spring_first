@@ -15,4 +15,6 @@ public interface SampleService {
 	void updateBoard(Map<String, Object> map, HttpServletRequest req) throws Exception;
 
 	void deleteBoard(Map<String, Object> map) throws Exception;
+
+	Map<String, Object> selectBoardPageList(Map<String, Object> map) throws Exception;
 }

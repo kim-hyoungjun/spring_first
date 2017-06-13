@@ -1,7 +1,6 @@
 package first.sample.controller;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import first.common.common.CommandMap;
 import first.sample.service.SampleService;
 
@@ -25,12 +25,23 @@ public class SampleController {
 	
 	@RequestMapping(value="/board/openBoardList.do")
     public ModelAndView openBoardList(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("board/boardList");
+		
+		Map<String,Object> resultMap = sampleService.selectBoardPageList(commandMap.getMap());
+
+		mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+		mv.addObject("list", resultMap.get("result"));
+		
+		return mv;
+		
+		/* Paging 하기 이전 버전
     	ModelAndView mv = new ModelAndView("/board/boardList");
     	
     	List<Map<String,Object>> list = sampleService.selectBoardList(commandMap.getMap());
     	mv.addObject("list", list);
     	
     	return mv;
+    	*/
     }
 	
 	@RequestMapping(value="/board/openBoardWrite.do")

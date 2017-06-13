@@ -23,12 +23,22 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<bean id="loggerInterceptor" class="first.common.logger.LoggerInterceptor"></bean>
+			<bean id="loggerInterceptor" class="first.common.Interceptor.LoggerInterceptor"></bean>
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<!-- 인터셉터가 적용될 URL -->
+			<mvc:mapping path="/**"/>
+			<!-- 인터셉터가 제외될 URL -->
+			<mvc:exclude-mapping path="/views/*.do"/>			
+			<!-- 적용될 인터셉터 -->
+			<bean id="firstInterceptor" class="first.common.Interceptor.FirstInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	<bean id="loggerAspect" class="first.common.logger.LoggerAspect" />
+	<bean id="loggerAspect" class="first.common.aspect.LoggerAspect" />	
+	<bean id="firstAspect" class="first.common.aspect.FirstAspect" />
 		
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
        

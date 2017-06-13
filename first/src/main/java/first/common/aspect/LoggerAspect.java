@@ -1,4 +1,4 @@
-package first.common.logger;
+package first.common.aspect;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -24,7 +24,7 @@ public class LoggerAspect {
 			name = "DAO \t\t : ";
 		}
 		
-		log.debug(name + type + "." + joinPoint.getSignature().getName() + "()");;
+		log.debug("[LoggerAspct] : " + name + type + "." + joinPoint.getSignature().getName() + "()");;
 		return joinPoint.proceed();
 	}
 	

@@ -29,6 +29,12 @@ public class SampleServiceImpl implements SampleService{
 	}
 
 	@Override
+	public Map<String, Object> selectBoardPageList(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return sampleDAO.selectBoardPageList(map);
+	}
+	
+	@Override
 	public void insertBoard(Map<String, Object> map, HttpServletRequest req) throws Exception {
 		sampleDAO.insertBoard(map);
 /*		
@@ -86,5 +92,4 @@ public class SampleServiceImpl implements SampleService{
 	public void deleteBoard(Map<String, Object> map) throws Exception {
 		sampleDAO.deleteBoard(map);
 	}
-
 }

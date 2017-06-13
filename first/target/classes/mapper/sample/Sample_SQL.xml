@@ -17,6 +17,23 @@
 				IDX DESC				
 		]]>		
 	</select>
+
+	<select id="SelectBoardPageList" parameterType="hashmap" resultType="hashmap">
+		<include refid="common.pagingPre" />
+		<![CDATA[
+			SELECT
+				ROW_NUMBER() OVER (ORDER BY IDX DESC) RNUM,
+				IDX,
+				TITLE,
+				HIT_CNT,
+				CREA_DTM
+			FROM
+				TB_BOARD
+			WHERE
+				DEL_GB = 'N'				
+		]]>
+		<include refid="common.pagingPost" />
+	</select>
 	
 	<insert id="insertBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
 		<selectKey keyProperty="IDX" resultType="string" order="BEFORE">

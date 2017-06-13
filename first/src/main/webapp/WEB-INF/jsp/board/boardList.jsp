@@ -24,7 +24,7 @@
 		<tbody>
 			<c:choose>
 				<c:when test="${fn:length(list) > 0}">
-					<c:forEach items="${list }" var="row">
+					<c:forEach items="${list }" var="row" varStatus="status">
 						<tr>
 							<td>${row.IDX }</td>
 							<td class="title">
@@ -44,6 +44,12 @@
 			</c:choose>
 		</tbody>
 	</table>
+
+	<c:if test="${not empty paginationInfo }">
+		<ui:pagination paginationInfo = "${paginationInfo }" type="text" jsFunction="fn_search" />
+	</c:if>
+	<input type="hidden" id="currentPageNo" name="currentPageNo" />
+	
 	<br/>
 	<a href="#this" class="btn" id="write">글쓰기</a>
 	
@@ -60,8 +66,7 @@
 				fn_openBoardDetail($(this));
 			});
 		});
-		
-		
+				
 		function fn_openBoardWrite(){
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/board/openBoardWrite.do' />");
@@ -72,6 +77,13 @@
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/board/openBoardDetail.do' />");
 			comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
+			comSubmit.submit();
+		}
+		
+		function fn_search(pageNo) {
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/board/openBoardList.do' />");
+			comSubmit.addParam("currentPageNo", pageNo);
 			comSubmit.submit();
 		}
 	</script>	
