@@ -5,7 +5,7 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
 <body>
-	<h2>게시판 목록</h2>
+	<h2>게시판 목록 (Paging)</h2>
 	<table class="board_list" width=100px>
 		<colgroup>
 			<col width="10%"/>
@@ -44,7 +44,7 @@
 			</c:choose>
 		</tbody>
 	</table>
-
+	
 	<c:if test="${not empty paginationInfo }">
 		<ui:pagination paginationInfo = "${paginationInfo }" type="text" jsFunction="fn_search" />
 	</c:if>

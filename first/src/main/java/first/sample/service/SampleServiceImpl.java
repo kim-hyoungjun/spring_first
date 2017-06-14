@@ -92,4 +92,9 @@ public class SampleServiceImpl implements SampleService{
 	public void deleteBoard(Map<String, Object> map) throws Exception {
 		sampleDAO.deleteBoard(map);
 	}
+
+	@Override
+	public List<Map<String, Object>> selectBoardListJson(Map<String, Object> map) throws Exception {
+		return sampleDAO.selectBoardListJson(map);
+	}
 }

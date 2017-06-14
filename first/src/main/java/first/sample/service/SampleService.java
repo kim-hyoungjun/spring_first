@@ -17,4 +17,6 @@ public interface SampleService {
 	void deleteBoard(Map<String, Object> map) throws Exception;
 
 	Map<String, Object> selectBoardPageList(Map<String, Object> map) throws Exception;
+
+	List<Map<String, Object>> selectBoardListJson(Map<String, Object> map) throws Exception;
 }

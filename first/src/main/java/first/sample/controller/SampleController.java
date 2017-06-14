@@ -1,6 +1,7 @@
 package first.sample.controller;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -43,6 +44,28 @@ public class SampleController {
     	return mv;
     	*/
     }
+
+	@RequestMapping(value="/board/openBoardListJson.do")
+    public ModelAndView openBoardListJson(CommandMap commandMap) throws Exception{
+		ModelAndView mv = new ModelAndView("board/boardListJson");
+
+		return mv;
+    }
+	
+	@RequestMapping(value="/board/JsonBoardList.do")
+	public ModelAndView jsonBoardList(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+		
+		List<Map<String, Object>> list = sampleService.selectBoardListJson(commandMap.getMap());
+		mv.addObject("list", list);
+		if(list.size() > 0) {
+			mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));			
+		} else {
+			mv.addObject("TOTAL", 0);
+		}
+		
+		return mv;
+	}
 	
 	@RequestMapping(value="/board/openBoardWrite.do")
 	public ModelAndView openBoardWrite(CommandMap commandMap) throws Exception{
