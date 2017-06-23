@@ -51,9 +51,15 @@ public class SampleController {
 
 		return mv;
     }
-	
+	/**
+	 * JSON Data 처리
+	 * @param commandMap
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/board/JsonBoardList.do")
 	public ModelAndView jsonBoardList(CommandMap commandMap) throws Exception {
+		// action-servlet에서 선언한 bean의 이름
 		ModelAndView mv = new ModelAndView("jsonView");
 		
 		List<Map<String, Object>> list = sampleService.selectBoardListJson(commandMap.getMap());

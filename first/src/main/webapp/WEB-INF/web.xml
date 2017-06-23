@@ -7,6 +7,7 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
  
+	<!-- filter -->
 	<filter>
 		<filter-name>firstFilter</filter-name>
 		<filter-class>first.common.filter.FirstFilter</filter-class>
@@ -19,7 +20,7 @@
 		<filter-name>firstFilter</filter-name>
 		<url-pattern>/views/*</url-pattern>
 	</filter-mapping>
-	
+		
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
